@@ -52,4 +52,21 @@ class slashCommands():
         await DealerDm.send(f"{ctx.author} splits!")
         await ctx.response.send_message(content="You split", ephemeral=True)
 
+
+    @bot.listen()
+    async def on_ready():
+        await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.playing, name="Playing some BlackJack"))
+        print(f"""
+        Bot Boot Log:
+            Status:{bot.status}
+            Commands:{len(bot.slash_commands)}
+            Activity:{bot.activity}
+            WebSocket:{bot.ws}
+            LocalizationStore:{bot.i18n}
+            Intents:{bot.intents}
+            LATENCY:{bot.latency}ms
+            Guilds: {[i.name for i in bot.guilds]}
+        """)
+        bot.allowed_mentions = disnake.AllowedMentions(everyone= True)
+
 bot.run(os.getenv("ToePicBotKey"))
