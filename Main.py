@@ -1,6 +1,8 @@
 import disnake, os
 from disnake.ext import commands
+from dotenv import load_dotenv
 
+load_dotenv()
 
 
 intents = disnake.Intents.all()
