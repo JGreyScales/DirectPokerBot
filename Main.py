@@ -53,7 +53,7 @@ class slashCommands():
         await ctx.response.send_message(content="You split", ephemeral=True)
 
     @bot.slash_command(description="DOUBLE DOWN", dm_permission=True)
-    async def split(ctx):
+    async def doubledown(ctx):
         Dealer = await bot.fetch_user(DEALER)
         DealerDm = await Dealer.create_dm()
 
