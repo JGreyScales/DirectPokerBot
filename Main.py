@@ -1,8 +1,6 @@
 import disnake, os
 from disnake.ext import commands
-from dotenv import load_dotenv
 
-load_dotenv()
 
 
 intents = disnake.Intents.all()
@@ -54,6 +52,13 @@ class slashCommands():
         await DealerDm.send(f"{ctx.author} splits!")
         await ctx.response.send_message(content="You split", ephemeral=True)
 
+    @bot.slash_command(description="DOUBLE DOWN", dm_permission=True)
+    async def split(ctx):
+        Dealer = await bot.fetch_user(DEALER)
+        DealerDm = await Dealer.create_dm()
+
+        await DealerDm.send(f"{ctx.author} has Double Downed!")
+        await ctx.response.send_message(content="You double down", ephemeral=True)
 
     @bot.listen()
     async def on_ready():
